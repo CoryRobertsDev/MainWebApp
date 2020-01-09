@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Repairs.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EQUIPMENT_REPAIRS">
+          <Key>
+            <PropertyRef Name="REPAIR_ID" />
+          </Key>
+          <Property Name="REPAIR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EQUIPMENT_ID" Type="int" Nullable="false" />
+          <Property Name="REQUESTED_BY" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RMA_NUM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SHIPPED_DATE" Type="date" Nullable="false" />
+          <Property Name="TRACKING_NUM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RECIPIENT" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADDRESS_1" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ADDRESS_2" Type="varchar" MaxLength="100" />
+          <Property Name="ADDRESS_3" Type="varchar" MaxLength="100" />
+          <Property Name="CITY" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="STATE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ZIP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="COUNTRY" Type="varchar" MaxLength="100" />
+          <Property Name="CONTACT_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="CONTACT_PHONE" Type="varchar" MaxLength="100" />
+          <Property Name="REPLACEMENT_SERIAL_NUM" Type="varchar" MaxLength="100" />
+          <Property Name="RETURNED" Type="bit" />
+          <Property Name="RETURNED_DATE" Type="date" />
+        </EntityType>
+        <Function Name="PAGE_REPAIR_ITEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="REPAIR_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spRepairCrud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ACTION" Type="varchar" Mode="In" />
+          <Parameter Name="REPAIR_ID" Type="int" Mode="In" />
+          <Parameter Name="EQUIPMENT_ID" Type="int" Mode="In" />
+          <Parameter Name="REQUESTED_BY" Type="varchar" Mode="In" />
+          <Parameter Name="RMA_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SHIPPED_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="TRACKING_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="RECIPIENT" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_1" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_2" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_3" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="STATE" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP" Type="varchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACT_PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACT_EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="REPLACEMENT_SERIAL_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="RETURNED" Type="bit" Mode="In" />
+          <Parameter Name="RETURNED_DATE" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SYS_INSERT_EQUIP_REPAIRS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EQUIPMENT_ID" Type="int" Mode="In" />
+          <Parameter Name="REQUESTED_BY" Type="varchar" Mode="In" />
+          <Parameter Name="RMA_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SHIPPED_DATE" Type="date" Mode="In" />
+          <Parameter Name="TRACKING_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="RECIPIENT" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_1" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_2" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_3" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="STATE" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP" Type="varchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACT_PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACT_EMAIL" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SYS_UPDATE_REPAIRS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="REPAIR_ID" Type="int" Mode="In" />
+          <Parameter Name="EQUIPMENT_ID" Type="int" Mode="In" />
+          <Parameter Name="REQUESTED_BY" Type="varchar" Mode="In" />
+          <Parameter Name="RMA_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SHIPPED_DATE" Type="date" Mode="In" />
+          <Parameter Name="TRACKING_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="RECIPIENT" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_1" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_2" Type="varchar" Mode="In" />
+          <Parameter Name="ADDRESS_3" Type="varchar" Mode="In" />
+          <Parameter Name="CITY" Type="varchar" Mode="In" />
+          <Parameter Name="STATE" Type="varchar" Mode="In" />
+          <Parameter Name="ZIP" Type="varchar" Mode="In" />
+          <Parameter Name="COUNTRY" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACT_PHONE" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACT_EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="REPLACEMENT_SERIAL_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="RETURNED" Type="bit" Mode="In" />
+          <Parameter Name="RETURNED_DATE" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="RepairsStoreContainer">
+          <EntitySet Name="EQUIPMENT_REPAIRS" EntityType="Self.EQUIPMENT_REPAIRS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Repairs" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EQUIPMENT_REPAIRS">
+          <Key>
+            <PropertyRef Name="REPAIR_ID" />
+          </Key>
+          <Property Name="REPAIR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EQUIPMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="REQUESTED_BY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RMA_NUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SHIPPED_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TRACKING_NUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RECIPIENT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CONTACT_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CONTACT_PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="REPLACEMENT_SERIAL_NUM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RETURNED" Type="Boolean" />
+          <Property Name="RETURNED_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EQUIPMENT_REPAIRS" EntityType="Self.EQUIPMENT_REPAIRS" />
+          <FunctionImport Name="spRepairCrud" ReturnType="Collection(Repairs.spRepairCrud_Result)">
+            <Parameter Name="ACTION" Mode="In" Type="String" />
+            <Parameter Name="REPAIR_ID" Mode="In" Type="Int32" />
+            <Parameter Name="EQUIPMENT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="REQUESTED_BY" Mode="In" Type="String" />
+            <Parameter Name="RMA_NUM" Mode="In" Type="String" />
+            <Parameter Name="SHIPPED_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="TRACKING_NUM" Mode="In" Type="String" />
+            <Parameter Name="RECIPIENT" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_1" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_2" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_3" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="STATE" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_PHONE" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_EMAIL" Mode="In" Type="String" />
+            <Parameter Name="REPLACEMENT_SERIAL_NUM" Mode="In" Type="String" />
+            <Parameter Name="RETURNED" Mode="In" Type="Boolean" />
+            <Parameter Name="RETURNED_DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Repairs_CRUD" EntitySet="EQUIPMENT_REPAIRS" ReturnType="Collection(Repairs.EQUIPMENT_REPAIRS)">
+            <Parameter Name="ACTION" Mode="In" Type="String" />
+            <Parameter Name="REPAIR_ID" Mode="In" Type="Int32" />
+            <Parameter Name="EQUIPMENT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="REQUESTED_BY" Mode="In" Type="String" />
+            <Parameter Name="RMA_NUM" Mode="In" Type="String" />
+            <Parameter Name="SHIPPED_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="TRACKING_NUM" Mode="In" Type="String" />
+            <Parameter Name="RECIPIENT" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_1" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_2" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_3" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="STATE" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_PHONE" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_EMAIL" Mode="In" Type="String" />
+            <Parameter Name="REPLACEMENT_SERIAL_NUM" Mode="In" Type="String" />
+            <Parameter Name="RETURNED" Mode="In" Type="Boolean" />
+            <Parameter Name="RETURNED_DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PAGE_REPAIR_ITEM" ReturnType="Collection(Repairs.PAGE_REPAIR_ITEM_Result)">
+            <Parameter Name="REPAIR_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SYS_INSERT_EQUIP_REPAIRS">
+            <Parameter Name="EQUIPMENT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="REQUESTED_BY" Mode="In" Type="String" />
+            <Parameter Name="RMA_NUM" Mode="In" Type="String" />
+            <Parameter Name="SHIPPED_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="TRACKING_NUM" Mode="In" Type="String" />
+            <Parameter Name="RECIPIENT" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_1" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_2" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_3" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="STATE" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_PHONE" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_EMAIL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SYS_UPDATE_REPAIRS">
+            <Parameter Name="REPAIR_ID" Mode="In" Type="Int32" />
+            <Parameter Name="EQUIPMENT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="REQUESTED_BY" Mode="In" Type="String" />
+            <Parameter Name="RMA_NUM" Mode="In" Type="String" />
+            <Parameter Name="SHIPPED_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="TRACKING_NUM" Mode="In" Type="String" />
+            <Parameter Name="RECIPIENT" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_1" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_2" Mode="In" Type="String" />
+            <Parameter Name="ADDRESS_3" Mode="In" Type="String" />
+            <Parameter Name="CITY" Mode="In" Type="String" />
+            <Parameter Name="STATE" Mode="In" Type="String" />
+            <Parameter Name="ZIP" Mode="In" Type="String" />
+            <Parameter Name="COUNTRY" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_PHONE" Mode="In" Type="String" />
+            <Parameter Name="CONTACT_EMAIL" Mode="In" Type="String" />
+            <Parameter Name="REPLACEMENT_SERIAL_NUM" Mode="In" Type="String" />
+            <Parameter Name="RETURNED" Mode="In" Type="Boolean" />
+            <Parameter Name="RETURNED_DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spRepairCrud_Result">
+          <Property Type="Int32" Name="EQUIPMENT_ID" Nullable="false" />
+          <Property Type="String" Name="REQUESTED_BY" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="RMA_NUM" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="SHIPPED_DATE" Nullable="false" />
+          <Property Type="String" Name="TRACKING_NUM" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="RECIPIENT" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ADDRESS_1" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ADDRESS_2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ADDRESS_3" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CITY" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="STATE" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ZIP" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="COUNTRY" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CONTACT_PHONE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CONTACT_EMAIL" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="REPLACEMENT_SERIAL_NUM" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="RETURNED" Nullable="true" />
+          <Property Type="DateTime" Name="RETURNED_DATE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PAGE_REPAIR_ITEM_Result">
+          <Property Type="Int32" Name="REPAIR_ID" Nullable="false" />
+          <Property Type="String" Name="EQUIPMENT_ID" Nullable="true" />
+          <Property Type="String" Name="REQUESTED_BY" Nullable="true" />
+          <Property Type="String" Name="RMA_NUM" Nullable="true" />
+          <Property Type="String" Name="SHIPPED_DATE" Nullable="true" />
+          <Property Type="String" Name="TRACKING_NUM" Nullable="true" />
+          <Property Type="String" Name="RECIPIENT" Nullable="true" />
+          <Property Type="String" Name="ADDRESS_1" Nullable="true" />
+          <Property Type="String" Name="ADDRESS_2" Nullable="true" />
+          <Property Type="String" Name="ADDRESS_3" Nullable="true" />
+          <Property Type="String" Name="CITY" Nullable="true" />
+          <Property Type="String" Name="STATE" Nullable="true" />
+          <Property Type="String" Name="ZIP" Nullable="true" />
+          <Property Type="String" Name="COUNTRY" Nullable="true" />
+          <Property Type="String" Name="CONTACT_PHONE" Nullable="true" />
+          <Property Type="String" Name="CONTACT_EMAIL" Nullable="true" />
+          <Property Type="String" Name="REPLACEMENT_SERIAL_NUM" Nullable="true" />
+          <Property Type="String" Name="RETURNED" Nullable="true" />
+          <Property Type="String" Name="RETURNED_DATE" Nullable="true" />
+          <Property Type="String" Name="MANUFACTURER" Nullable="true" />
+          <Property Type="String" Name="MODEL" Nullable="true" />
+          <Property Type="String" Name="SUBMODEL" Nullable="true" />
+          <Property Type="String" Name="SERIAL_NUM" Nullable="true" />
+          <Property Type="String" Name="UC_SERIAL_NUM" Nullable="true" />
+          <Property Type="String" Name="WARRANTY" Nullable="true" />
+          <Property Type="String" Name="COLLEAUGE_ID" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RepairsStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="EQUIPMENT_REPAIRS">
+            <EntityTypeMapping TypeName="Repairs.EQUIPMENT_REPAIRS">
+              <MappingFragment StoreEntitySet="EQUIPMENT_REPAIRS">
+                <ScalarProperty Name="REPAIR_ID" ColumnName="REPAIR_ID" />
+                <ScalarProperty Name="EQUIPMENT_ID" ColumnName="EQUIPMENT_ID" />
+                <ScalarProperty Name="REQUESTED_BY" ColumnName="REQUESTED_BY" />
+                <ScalarProperty Name="RMA_NUM" ColumnName="RMA_NUM" />
+                <ScalarProperty Name="SHIPPED_DATE" ColumnName="SHIPPED_DATE" />
+                <ScalarProperty Name="TRACKING_NUM" ColumnName="TRACKING_NUM" />
+                <ScalarProperty Name="RECIPIENT" ColumnName="RECIPIENT" />
+                <ScalarProperty Name="ADDRESS_1" ColumnName="ADDRESS_1" />
+                <ScalarProperty Name="ADDRESS_2" ColumnName="ADDRESS_2" />
+                <ScalarProperty Name="ADDRESS_3" ColumnName="ADDRESS_3" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CONTACT_EMAIL" ColumnName="CONTACT_EMAIL" />
+                <ScalarProperty Name="CONTACT_PHONE" ColumnName="CONTACT_PHONE" />
+                <ScalarProperty Name="REPLACEMENT_SERIAL_NUM" ColumnName="REPLACEMENT_SERIAL_NUM" />
+                <ScalarProperty Name="RETURNED" ColumnName="RETURNED" />
+                <ScalarProperty Name="RETURNED_DATE" ColumnName="RETURNED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Repairs.EQUIPMENT_REPAIRS">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="Repairs.Store.SYS_INSERT_EQUIP_REPAIRS">
+                  <ScalarProperty Name="CONTACT_EMAIL" ParameterName="CONTACT_EMAIL" />
+                  <ScalarProperty Name="CONTACT_PHONE" ParameterName="CONTACT_PHONE" />
+                  <ScalarProperty Name="COUNTRY" ParameterName="COUNTRY" />
+                  <ScalarProperty Name="ZIP" ParameterName="ZIP" />
+                  <ScalarProperty Name="STATE" ParameterName="STATE" />
+                  <ScalarProperty Name="CITY" ParameterName="CITY" />
+                  <ScalarProperty Name="ADDRESS_3" ParameterName="ADDRESS_3" />
+                  <ScalarProperty Name="ADDRESS_2" ParameterName="ADDRESS_2" />
+                  <ScalarProperty Name="ADDRESS_1" ParameterName="ADDRESS_1" />
+                  <ScalarProperty Name="RECIPIENT" ParameterName="RECIPIENT" />
+                  <ScalarProperty Name="TRACKING_NUM" ParameterName="TRACKING_NUM" />
+                  <ScalarProperty Name="SHIPPED_DATE" ParameterName="SHIPPED_DATE" />
+                  <ScalarProperty Name="RMA_NUM" ParameterName="RMA_NUM" />
+                  <ScalarProperty Name="REQUESTED_BY" ParameterName="REQUESTED_BY" />
+                  <ScalarProperty Name="EQUIPMENT_ID" ParameterName="EQUIPMENT_ID" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="Repairs.Store.SYS_UPDATE_REPAIRS">
+                  <ScalarProperty Name="RETURNED_DATE" ParameterName="RETURNED_DATE" Version="Current" />
+                  <ScalarProperty Name="RETURNED" ParameterName="RETURNED" Version="Current" />
+                  <ScalarProperty Name="REPLACEMENT_SERIAL_NUM" ParameterName="REPLACEMENT_SERIAL_NUM" Version="Current" />
+                  <ScalarProperty Name="CONTACT_EMAIL" ParameterName="CONTACT_EMAIL" Version="Current" />
+                  <ScalarProperty Name="CONTACT_PHONE" ParameterName="CONTACT_PHONE" Version="Current" />
+                  <ScalarProperty Name="COUNTRY" ParameterName="COUNTRY" Version="Current" />
+                  <ScalarProperty Name="ZIP" ParameterName="ZIP" Version="Current" />
+                  <ScalarProperty Name="STATE" ParameterName="STATE" Version="Current" />
+                  <ScalarProperty Name="CITY" ParameterName="CITY" Version="Current" />
+                  <ScalarProperty Name="ADDRESS_3" ParameterName="ADDRESS_3" Version="Current" />
+                  <ScalarProperty Name="ADDRESS_2" ParameterName="ADDRESS_2" Version="Current" />
+                  <ScalarProperty Name="ADDRESS_1" ParameterName="ADDRESS_1" Version="Current" />
+                  <ScalarProperty Name="RECIPIENT" ParameterName="RECIPIENT" Version="Current" />
+                  <ScalarProperty Name="TRACKING_NUM" ParameterName="TRACKING_NUM" Version="Current" />
+                  <ScalarProperty Name="SHIPPED_DATE" ParameterName="SHIPPED_DATE" Version="Current" />
+                  <ScalarProperty Name="RMA_NUM" ParameterName="RMA_NUM" Version="Current" />
+                  <ScalarProperty Name="REQUESTED_BY" ParameterName="REQUESTED_BY" Version="Current" />
+                  <ScalarProperty Name="EQUIPMENT_ID" ParameterName="EQUIPMENT_ID" Version="Current" />
+                  <ScalarProperty Name="REPAIR_ID" ParameterName="REPAIR_ID" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spRepairCrud" FunctionName="Repairs.Store.spRepairCrud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Repairs.spRepairCrud_Result">
+                <ScalarProperty Name="EQUIPMENT_ID" ColumnName="EQUIPMENT_ID" />
+                <ScalarProperty Name="REQUESTED_BY" ColumnName="REQUESTED_BY" />
+                <ScalarProperty Name="RMA_NUM" ColumnName="RMA_NUM" />
+                <ScalarProperty Name="SHIPPED_DATE" ColumnName="SHIPPED_DATE" />
+                <ScalarProperty Name="TRACKING_NUM" ColumnName="TRACKING_NUM" />
+                <ScalarProperty Name="RECIPIENT" ColumnName="RECIPIENT" />
+                <ScalarProperty Name="ADDRESS_1" ColumnName="ADDRESS_1" />
+                <ScalarProperty Name="ADDRESS_2" ColumnName="ADDRESS_2" />
+                <ScalarProperty Name="ADDRESS_3" ColumnName="ADDRESS_3" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CONTACT_PHONE" ColumnName="CONTACT_PHONE" />
+                <ScalarProperty Name="CONTACT_EMAIL" ColumnName="CONTACT_EMAIL" />
+                <ScalarProperty Name="REPLACEMENT_SERIAL_NUM" ColumnName="REPLACEMENT_SERIAL_NUM" />
+                <ScalarProperty Name="RETURNED" ColumnName="RETURNED" />
+                <ScalarProperty Name="RETURNED_DATE" ColumnName="RETURNED_DATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Repairs_CRUD" FunctionName="Repairs.Store.spRepairCrud" />
+          <FunctionImportMapping FunctionImportName="PAGE_REPAIR_ITEM" FunctionName="Repairs.Store.PAGE_REPAIR_ITEM">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Repairs.PAGE_REPAIR_ITEM_Result">
+                <ScalarProperty Name="REPAIR_ID" ColumnName="REPAIR_ID" />
+                <ScalarProperty Name="EQUIPMENT_ID" ColumnName="EQUIPMENT_ID" />
+                <ScalarProperty Name="REQUESTED_BY" ColumnName="REQUESTED_BY" />
+                <ScalarProperty Name="RMA_NUM" ColumnName="RMA_NUM" />
+                <ScalarProperty Name="SHIPPED_DATE" ColumnName="SHIPPED_DATE" />
+                <ScalarProperty Name="TRACKING_NUM" ColumnName="TRACKING_NUM" />
+                <ScalarProperty Name="RECIPIENT" ColumnName="RECIPIENT" />
+                <ScalarProperty Name="ADDRESS_1" ColumnName="ADDRESS_1" />
+                <ScalarProperty Name="ADDRESS_2" ColumnName="ADDRESS_2" />
+                <ScalarProperty Name="ADDRESS_3" ColumnName="ADDRESS_3" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CONTACT_PHONE" ColumnName="CONTACT_PHONE" />
+                <ScalarProperty Name="CONTACT_EMAIL" ColumnName="CONTACT_EMAIL" />
+                <ScalarProperty Name="REPLACEMENT_SERIAL_NUM" ColumnName="REPLACEMENT_SERIAL_NUM" />
+                <ScalarProperty Name="RETURNED" ColumnName="RETURNED" />
+                <ScalarProperty Name="RETURNED_DATE" ColumnName="RETURNED_DATE" />
+                <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="SUBMODEL" ColumnName="SUBMODEL" />
+                <ScalarProperty Name="SERIAL_NUM" ColumnName="SERIAL_NUM" />
+                <ScalarProperty Name="UC_SERIAL_NUM" ColumnName="UC_SERIAL_NUM" />
+                <ScalarProperty Name="WARRANTY" ColumnName="WARRANTY" />
+                <ScalarProperty Name="COLLEAUGE_ID" ColumnName="COLLEAUGE_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SYS_INSERT_EQUIP_REPAIRS" FunctionName="Repairs.Store.SYS_INSERT_EQUIP_REPAIRS" />
+          <FunctionImportMapping FunctionImportName="SYS_UPDATE_REPAIRS" FunctionName="Repairs.Store.SYS_UPDATE_REPAIRS" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

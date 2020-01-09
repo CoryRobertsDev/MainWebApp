@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MainWebApp.Models.spRepairCrud_Result>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Equipment Repairs / Index</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.REPAIR_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EQUIPMENT_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REQUESTED_BY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SHIPPED_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRACKING_NUM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RECIPIENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTACT_PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTACT_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REPLACEMENT_SERIAL_NUM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RETURNED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RETURNED_DATE)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.REPAIR_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EQUIPMENT_ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REQUESTED_BY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SHIPPED_DATE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TRACKING_NUM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RECIPIENT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CONTACT_PHONE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CONTACT_EMAIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REPLACEMENT_SERIAL_NUM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RETURNED)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RETURNED_DATE)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.REPAIR_ID })
+        @Html.ActionLink("Details", "Details", new { id = item.REPAIR_ID })
+    </td>
+</tr>
+    }
+    </table>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
